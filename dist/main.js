@@ -5333,7 +5333,7 @@ var $elm$core$Task$perform = F2(
 			$elm$core$Task$Perform(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
-var $elm$browser$Browser$element = _Browser_element;
+var $elm$browser$Browser$document = _Browser_document;
 var $author$project$Main$GotQiita = function (a) {
 	return {$: 'GotQiita', a: a};
 };
@@ -6290,7 +6290,6 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$header = _VirtualDom_node('header');
@@ -6315,8 +6314,10 @@ var $author$project$Main$load = F2(
 				return template(data);
 		}
 	});
+var $elm$html$Html$main_ = _VirtualDom_node('main');
 var $elm$html$Html$nav = _VirtualDom_node('nav');
 var $elm$html$Html$section = _VirtualDom_node('section');
+var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$core$Tuple$second = function (_v0) {
 	var y = _v0.b;
 	return y;
@@ -6395,10 +6396,8 @@ var $author$project$Main$sections = function (model) {
 };
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $author$project$Main$view = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
+	return {
+		body: _List_fromArray(
 			[
 				A2(
 				$elm$html$Html$header,
@@ -6423,27 +6422,27 @@ var $author$project$Main$view = function (model) {
 											$elm$html$Html$text(section.name)
 										]));
 							},
-							$author$project$Main$sections(model)))
-					])),
-				A2(
-				$elm$html$Html$h1,
-				_List_Nil,
-				_List_fromArray(
-					[
+							$author$project$Main$sections(model))),
 						A2(
-						$elm$html$Html$span,
+						$elm$html$Html$h1,
+						_List_Nil,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('sugoi')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Sugoi')
-							])),
-						$elm$html$Html$text(' Trend List with Elm')
+								A2(
+								$elm$html$Html$span,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('sugoi')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Sugoi')
+									])),
+								$elm$html$Html$text(' Trend List with Elm')
+							]))
 					])),
 				A2(
-				$elm$html$Html$div,
+				$elm$html$Html$main_,
 				_List_Nil,
 				A2(
 					$elm$core$List$map,
@@ -6467,9 +6466,11 @@ var $author$project$Main$view = function (model) {
 								]));
 					},
 					$author$project$Main$sections(model)))
-			]));
+			]),
+		title: 'Sugoi Trend List with Elm'
+	};
 };
-var $author$project$Main$main = $elm$browser$Browser$element(
+var $author$project$Main$main = $elm$browser$Browser$document(
 	{init: $author$project$Main$init, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));

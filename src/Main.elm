@@ -1,7 +1,7 @@
 module Main exposing (..)
 
-import Browser
-import Html exposing (Html, div, text, a, h1, h2, header, nav, span)
+import Browser exposing (Document)
+import Html exposing (Html, div, text, a, h1, h2, header, nav, span, main_)
 import Html.Attributes exposing (href, class, id)
 import Http
 import Json.Decode exposing (Decoder, list, field, string, map2)
@@ -10,7 +10,7 @@ import Json.Decode exposing (Decoder, list, field, string, map2)
 
 main : Program () Model Msg
 main =
-  Browser.element
+  Browser.document
     { init = init
     , update = update
     , subscriptions = subscriptions
@@ -153,20 +153,21 @@ sections model =
     }
     ]
 
-view : Model -> Html Msg
+view : Model -> Document Msg
 view model =
-    div []
+    { title = "Sugoi Trend List with Elm"
+    , body =
     [ header []
     [ nav []
         (List.map
             (\section -> a [href (String.append "#" section.id)] [text section.name]) (sections model)
         )
-    ]
     , h1 []
         [ span [class "sugoi"] [ text "Sugoi" ]
         , text " Trend List with Elm"
         ]
-    , div []
+    ]
+    , main_ []
         (List.map
             (\section -> Html.section []
                 [ h2 [id section.id] [ text section.name ]
@@ -175,3 +176,4 @@ view model =
                 (sections model)
         )
     ]
+    }
