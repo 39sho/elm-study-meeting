@@ -1,0 +1,1 @@
+[github pages](https://39sho.github.io/elm-study-meeting/dist/)
